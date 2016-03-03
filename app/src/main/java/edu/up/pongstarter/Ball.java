@@ -19,6 +19,7 @@ public class Ball {
     protected int yCoor;
     protected int rad;
     protected int xSpeed;
+    protected boolean onScreen;
     protected int ySpeed;
     protected int wallWidth = 50;
 
@@ -32,6 +33,7 @@ public class Ball {
         ySpeed = (int)(Math.random()*60)+10;
         this.rad = 60;
         this.color = Color.WHITE;
+        onScreen=true;
     }
 
     /**
