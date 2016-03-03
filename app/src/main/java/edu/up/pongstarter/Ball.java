@@ -39,7 +39,7 @@ public class Ball {
      */
     public int getRandHeight() {
         int rand = (int)(Math.random()*(1294-50-rad));
-        return rand+(50+rad);
+        return (rand+(50+rad));
     }
 
     /**
@@ -47,8 +47,8 @@ public class Ball {
      * @return a random number for the width
      */
     public int getRandWidth() {
-        int rand = (int)(Math.random()*(2048-50-rad));
-        return rand+(50+rad);
+        int rand = (int)(Math.random()*(1800-50-rad));
+        return (rand+(50+rad));
     }
 
     /**
@@ -64,10 +64,10 @@ public class Ball {
      * playing field and resets the ball's position and velocity randomly
      */
     public void resetBall() {
-        xCoor = getRandHeight();
-        yCoor = getRandWidth();
-        xCoor = (int)(Math.random()*60)+10;
-        yCoor = (int)(Math.random()*60)+10;
+        xCoor = getRandWidth();
+        yCoor = getRandHeight();
+        xSpeed = (int)(Math.random()*60)+10;
+        ySpeed = (int)(Math.random()*60)+10;
     }
 
     /**
@@ -102,4 +102,9 @@ public class Ball {
         yCoor = newCoor;
     }
 
+    /**
+     * setRadius - resets the ball's radius
+     * @param newRad new radius for the ball
+     */
+    public void setRadius(int newRad) { rad = newRad; }
 }
