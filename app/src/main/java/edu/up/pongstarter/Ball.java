@@ -20,6 +20,7 @@ public class Ball {
     protected int rad;
     protected int xSpeed;
     protected int ySpeed;
+    protected int wallWidth = 50;
 
     /**
      * Ball constructor - initializes instance variables
@@ -38,8 +39,8 @@ public class Ball {
      * @return a random number for the height
      */
     public int getRandHeight() {
-        int rand = (int)(Math.random()*(1294-50-rad));
-        return (rand+(50+rad));
+        int rand = (int)(Math.random()*(1294-wallWidth-rad));
+        return (rand+(wallWidth+rad));
     }
 
     /**
@@ -47,8 +48,8 @@ public class Ball {
      * @return a random number for the width
      */
     public int getRandWidth() {
-        int rand = (int)(Math.random()*(1800-50-rad));
-        return (rand+(50+rad));
+        int rand = (int)(Math.random()*(1500-wallWidth-rad));
+        return (rand+(wallWidth+rad));
     }
 
     /**
