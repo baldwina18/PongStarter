@@ -5,23 +5,24 @@ import java.util.ArrayList;
 
 /**
  * @author Alexa Baldwin
- * @version 2/27/2016
+ * @version 03/04/2016
  */
 
 /**
  * Ball class
  * Each ball has an x-coordinate, y-coordinate, radius,
- * x-speed, y-speed and color.
+ * x-speed, y-speed and color. The onScreen boolean determines
+ * if the ball is still visible to the user
  */
 public class Ball {
-    protected int color;
-    protected int xCoor;
-    protected int yCoor;
-    protected int rad;
-    protected int xSpeed;
-    protected boolean onScreen;
-    protected int ySpeed;
-    protected int wallWidth = 50;
+    protected int color;            //color of ball
+    protected int xCoor;            //x coordinate of ball
+    protected int yCoor;            //y coordinate of ball
+    protected int rad;              //radius of ball
+    protected int xSpeed;           //x speed of ball
+    protected boolean onScreen;     //tells if ball is on screen or not
+    protected int ySpeed;           //y speed of ball
+    protected int wallWidth = 50;   //width of walls
 
     /**
      * Ball constructor - initializes instance variables
@@ -29,11 +30,12 @@ public class Ball {
     public Ball () {
         xCoor = getRandWidth();
         yCoor = getRandHeight();
-        xSpeed = (int)(Math.random()*60)+10;
-        ySpeed = (int)(Math.random()*60)+10;
-        this.rad = 60;
+        xSpeed = (int)(Math.random()*20)+30;
+        ySpeed = (int)(Math.random()*20)+30;
+        this.rad = 45;
         this.color = Color.WHITE;
         onScreen=true;
+        addDirection();
     }
 
     /**
@@ -50,8 +52,8 @@ public class Ball {
      * @return a random number for the width
      */
     public int getRandWidth() {
-        int rand = (int)(Math.random()*(1500-wallWidth-rad));
-        return (rand+(wallWidth+rad));
+        int rand = (int)(Math.random()*1000)+500;
+        return rand;
     }
 
     /**
@@ -60,17 +62,6 @@ public class Ball {
      */
     public void addBall(ArrayList<Ball> abl) {
         abl.add(this);
-    }
-
-    /**
-     * reset ball - this method gets called when the ball exits the
-     * playing field and resets the ball's position and velocity randomly
-     */
-    public void resetBall() {
-        xCoor = getRandWidth();
-        yCoor = getRandHeight();
-        xSpeed = (int)(Math.random()*60)+10;
-        ySpeed = (int)(Math.random()*60)+10;
     }
 
     /**
@@ -110,4 +101,20 @@ public class Ball {
      * @param newRad new radius for the ball
      */
     public void setRadius(int newRad) { rad = newRad; }
+
+    /**
+     * addDirection - determines the sign on the velocity of the balls
+     */
+    public void addDirection() {
+        double rand = Math.random();
+        if(rand<.25) {
+            xSpeed *= -1;
+            ySpeed *= -1;
+        } else if (rand <.5) {
+            xSpeed *= -1;
+        } else if (rand <.75) {
+            ySpeed *= -1;
+        } else {}
+    }
+
 }
